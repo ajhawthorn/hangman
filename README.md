@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Rules of the Hangman Game
+
+Can you guess the word?
+Type a letter on the keyboard to guess a letter.
+If the answer contains your letter, it will appear in the correct position(s) in the word and you can guess again.
+For every wrong guess, an element of the hangman will appear.
+Can you guess the word before the hangman is fully drawn?
