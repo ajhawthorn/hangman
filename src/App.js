@@ -4,6 +4,7 @@ import Header from "./components/Header.js";
 import Figures from "./components/Figures.js";
 import WrongLetters from "./components/WrongLetters.js";
 import Answer from "./components/Answer.js";
+import Help from "./components/Help.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Container from "react-bootstrap/Container";
@@ -19,7 +20,7 @@ function App() {
           <Col>
             <Answer />
             <WrongLetters />
-
+            <Help />
             <Figures />
           </Col>
         </Row>

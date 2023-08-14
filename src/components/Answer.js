@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Figures from "./Figures";
 import WrongLetters from "./WrongLetters";
 import Button from "react-bootstrap/Button";
+import Result from "./Result";
 import { Container, Row, Col } from "react-bootstrap";
 
 // answer will need the selectedWord and correctLetters
@@ -13,12 +14,6 @@ const Answer = () => {
   const [hangmanState, setHangmanState] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [isWin, setIsWin] = useState(false);
-
-  const handleHelpClick = () => {
-    const gameRules =
-      "Type a letter on the keyboard to guess a letter in the word. \nFor every wrong guess, an element of the hangman will appear. \nCan you guess the word before the hangman appears?";
-    alert(gameRules);
-  };
 
   // Function to fetch random word from dictionary.txt
 
@@ -156,29 +151,26 @@ const Answer = () => {
 
   return (
     <div>
-      {isGameOver() ? (
-        <div>
-          <p>Sorry, game over</p>
-          <p>The correct word was: {selectedWord}</p>
-
-          <Button variant="dark" onClick={handleRestart}>
-            Restart
-          </Button>
-        </div>
-      ) : isWin ? (
-        <div>
-          <p>Winner! Congratulations!</p>
-          <p>The correct word was: {selectedWord}</p>
-          <Button variant="dark" onClick={handleRestart}>
-            Restart
-          </Button>
-        </div>
+      {isGameOver() || isWin ? (
+        <Result
+          key="result"
+          isWin={isWin}
+          selectedWord={selectedWord}
+          handleRestart={handleRestart}
+        />
       ) : (
         <>
-          <p>{getDisplayWord()}</p>
-          <p>Wrong Letters:</p>
-          <WrongLetters wrongLetters={wrongLetters} />
-          <Figures hangmanState={hangmanState} correctWord={selectedWord} />
+          <p key="displayWord">{getDisplayWord()}</p>
+          <p key="wrongLettersHeader">Wrong Letters:</p>
+          <WrongLetters
+            key="wrongLettersComponent"
+            wrongLetters={wrongLetters}
+          />
+          <Figures
+            key="figuresComponent"
+            hangmanState={hangmanState}
+            correctWord={selectedWord}
+          />
         </>
       )}
     </div>
